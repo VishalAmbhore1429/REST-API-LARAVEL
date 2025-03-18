@@ -10,6 +10,6 @@ Route::get('/user', function (Request $request) {
 
 Route::post('addbook',[BookController::class,'store']);
 Route::get('showallbooks',[BookController::class,'index']);
-Route::post('updatebook/{id}',[BookController::class,'update']);
+Route::put('updatebook/{id}',[BookController::class,'update']);
 Route::delete('deletebook/{id}',[BookController::class,'destroy']);
 Route::get('showonebook/{id}',[BookController::class,'show']);

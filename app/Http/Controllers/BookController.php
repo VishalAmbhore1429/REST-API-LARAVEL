@@ -44,8 +44,9 @@ class BookController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request,$id)
+    public function update(Request $request,int $id)
     {
+        // dd($request->all(), $id);
 
         $validateData = $request->validate([
             'bookname'=>'required',
@@ -61,7 +62,7 @@ class BookController extends Controller
                 'authorname'=>$validateData['authorname'],
                 'language'=>$validateData['language'],
             ]); 
-            return response()->json(['message'=>'Book Updated Successfully',$updateBook],200);
+            return response()->json(['message'=>'Book Updated Successfully',$updateBook->toArray()],200);
         }else{
             return response()->json(['message'=>'Book not Found!'],404);
         }
@@ -85,7 +86,7 @@ class BookController extends Controller
     {
         $showBook = Book::find($id);
         if($showBook){
-            return response()->json(['message'=>'Book Found!',$showBook],200);
+            return response()->json($showBook->toArray(),200);
         }else{
             return response()->json(['message'=>'Book not found!'],404);
         }

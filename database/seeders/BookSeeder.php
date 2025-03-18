@@ -15,7 +15,7 @@ class BookSeeder extends Seeder
     public function run(): void
     {
         $faker = Faker::create(); 
-        for ($i=1;$i<=100;$i++){
+        for ($i=1;$i<=10;$i++){
             $book = new Book;
             $book->bookname = $faker->name;
             $book->authorname = $faker->name;
